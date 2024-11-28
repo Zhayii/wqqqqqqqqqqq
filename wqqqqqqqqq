@@ -1,0 +1,233 @@
+using System;
+
+namespace ZAIRA_PRINCE_FASHION_BOUTIQUE
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            string[] mensclothes = { "Shirt  ", "Jeans  ", "Jackets", "T-shirts" };
+            int[] menprice = { 1300, 2500, 3800, 1200 };
+
+            string[] womenclothes = { "Blouses", "Skirt", "Dress", "Tops" };
+            int[] womenprice = { 1600, 1800, 5000, 1500 };
+
+            string[] accessories = { "Belt (One size)", "Hat (One size)", "Sunglasses(OS)", "Watch(One size)" };
+            int[] accessoriesprice = { 580, 800, 1400, 2500 };
+
+            string[] sizes = { "Small", "Medium", "Large" };
+            string[] accessoriessize = { "One size" };
+
+            int choice;
+            int item;
+            int size;
+            int quantity;
+            double mentotalprice, womentotalprice, accessoriestotalprice;
+            string summary = "";
+            double summaryprice = 0;
+            string answer;
+
+            Console.SetWindowSize(120, 40);
+            string boutiquename = "Zaira & Prince Fashion Boutique!";
+
+            do
+            {
+                Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                Console.Clear();
+                Console.SetCursorPosition(40, 1);
+                Console.WriteLine("Welcome to {0}", boutiquename);
+                Console.WriteLine("\n\t\t\tCategories:");
+                Console.WriteLine("\n\t\t\t\t\t1. Men's Clothes");
+                Console.WriteLine("\n\t\t\t\t\t2. Women's Clothes");
+                Console.WriteLine("\n\t\t\t\t\t3. Accessories");
+                Console.WriteLine("\n\t\t\t\t\t4. exit");
+                Console.Write("\n\t\t\tChoose a categories(1-4): ");
+                choice = Convert.ToInt32(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                        Console.Clear();
+                        Console.WriteLine("\n\t\t\tMen's Clothes:");
+                        for (int i = 0; i < mensclothes.Length; i++)
+                        {
+                            Console.WriteLine("\n\t\t\t\t\t{0}. {1} \t\t- \t\tP {2}", i + 1, mensclothes[i], menprice[i]);
+                        }
+                        Console.Write("\n\t\t\tChoose item (1-4): ");
+                        item = Convert.ToInt32(Console.ReadLine());
+                        if (item == 1)
+                        {
+                            Console.WriteLine("\n\t\t\tYou've chosen a Shirt item!");
+                        }
+                        else if (item == 2)
+                        {
+                            Console.WriteLine("\n\t\t\tYou've chosen a Jeans item!");
+                        }
+                        else if (item == 3)
+                        {
+                            Console.WriteLine("\n\t\t\tYou've chosen a Jackets item!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n\t\t\tYou've chosen a T-shirts item!");
+                        }
+                        Console.WriteLine("\n\t\t\tSizes:");
+                            for (int j = 0; j < sizes.Length; j++)
+                            {
+                                Console.WriteLine("\n\t\t\t\t\t{0}. {1}", j + 1, sizes[j]);
+                            }
+                            Console.Write("\n\t\t\tChoose size(1-3): ");
+                            size = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("\n\t\t\tEnter 0 to quantity if you don't want to buy");
+                        Console.Write("\t\t\tEnter quantity: ");
+                        quantity = Convert.ToInt32(Console.ReadLine());
+
+                        mentotalprice = quantity * menprice[item-1];
+                        Console.WriteLine("\n\t\t\tAdded: {0} x {1}({2}) - P {3:n2}", quantity, mensclothes[item - 1], sizes[size - 1], mentotalprice);
+                        if (quantity > 0)
+                        {
+                            summary += $"\n\t\t\t\t{quantity} x {mensclothes[item - 1]}({sizes[size - 1]})  \t\t\t\t\tP {mentotalprice:n2}";
+                            summaryprice += mentotalprice;
+                        }
+                        break;
+
+                    case 2:
+                        Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                        Console.Clear();
+                        Console.WriteLine("\n\t\t\tWomen's Clothes:");
+                        for (int i = 0; i < womenclothes.Length; i++)
+                        {
+                            Console.WriteLine("\n\t\t\t\t\t{0}. {1} \t\t- \t\tP {2}", i + 1, womenclothes[i], womenprice[i]);
+                        }
+                        Console.Write("\n\t\t\tChoose item (1-4): ");
+                        item = Convert.ToInt32(Console.ReadLine());
+                        if (item == 1)
+                        {
+                            Console.WriteLine("\n\t\t\tYou've chosen a Blouse item!");
+                        }
+                        else if (item == 2)
+                        {
+                            Console.WriteLine("\n\t\t\tYou've chosen a Skirt item!");
+                        }
+                        else if (item == 3)
+                        {
+                            Console.WriteLine("\n\t\t\tYou've chosen a Dress item!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n\t\t\tYou've chosen a Top item!");
+                        }
+                        Console.WriteLine("\n\t\t\tSizes(1-3):");
+                            for (int j = 0; j < sizes.Length; j++)
+                            {
+                                Console.WriteLine("\n\t\t\t\t\t{0}. {1}", j + 1, sizes[j]);
+                            }
+                            Console.Write("\n\t\t\tChoose size: ");
+                            size = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("\n\t\t\tEnter 0 to quantity if you don't want to buy");
+                        Console.Write("\t\t\tEnter quantity: ");
+                        quantity = Convert.ToInt32(Console.ReadLine());
+
+                        womentotalprice = quantity * womenprice[item - 1];
+                        Console.WriteLine("\n\t\t\tAdded: {0} x {1}({2}) - P {3:n2}", quantity, womenclothes[item - 1], sizes[size - 1], womentotalprice);
+                        if (quantity > 0)
+                        {
+                            summary += $"\n\t\t\t\t{quantity} x {womenclothes[item - 1]} ({sizes[size - 1]})  \t\t\t\t\tP {womentotalprice:n2}";
+                            summaryprice += womentotalprice;
+                        }
+                        break;
+                    case 3:
+                        Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                        Console.Clear();
+                        Console.WriteLine("\n\t\t\tAccessories:");
+                        for (int i = 0; i < accessories.Length; i++)
+                        {
+                            Console.WriteLine("\n\t\t\t\t\t{0}. {1}\t\t- \t\tP {2}", i + 1, accessories[i], accessoriesprice[i]);
+                        }
+                        Console.Write("\n\t\t\tChoose item (1-4): ");
+                        item = Convert.ToInt32(Console.ReadLine());
+                        if (item == 1)
+                        {
+                            Console.WriteLine("\n\t\t\tYou've chosen a Belt (One size) item!");
+                        }
+                        else if (item == 2)
+                        {
+                            Console.WriteLine("\n\t\t\tYou've chosen a Hat (One size) item!");
+                        }
+                        else if (item == 3)
+                        {
+                            Console.WriteLine("\n\t\t\tYou've chosen a Sunglasses (One size) item!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n\t\t\tYou've chosen a Watch (One size) item!");
+                        }
+
+                        Console.WriteLine("\n\t\t\tEnter 0 to quantity if you don't want to buy");
+                        Console.Write("\t\t\tEnter quantity: ");
+                        quantity = Convert.ToInt32(Console.ReadLine());
+                        accessoriestotalprice = quantity * accessoriesprice[item - 1];
+                        Console.WriteLine("\n\t\t\tAdded: {0} x {1} - P {2:n2}", quantity, accessories[item - 1], accessoriestotalprice);
+                        if (quantity > 0)
+                        {
+                            summary += $"\n\t\t\t\t{quantity} x {accessories[item - 1]}  \t\t\t\t\tP {accessoriestotalprice:n2}";
+                            summaryprice += accessoriestotalprice;
+                        }
+                        break;
+                    case 4:
+                        Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                        Console.Clear();
+                        Console.WriteLine("\n\n\t\t\t\tThank you for shopping at {0}", boutiquename);
+                        Console.WriteLine("\n\n\t\t\tPurchase Summary:");
+                        Console.WriteLine("\t\t\t-------------------------------------------------------------------------------");
+                        Console.WriteLine("\n\t\t\t\tITEMS:\t\t\t\t\t\t\tTOTAL:");
+                        Console.WriteLine("\t\t\t-------------------------------------------------------------------------------");
+                        Console.WriteLine(summary);
+                        Console.WriteLine("\t\t\t-------------------------------------------------------------------------------");
+                        if (summaryprice > 0)
+                        {
+                            Console.WriteLine("\n\n\t\t\tTotal cost = P{0:n2}", summaryprice);
+                            Console.WriteLine("\t\t\t-------------------------------------------------------------------------------");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n\t\t\t\t\t\t\tNo items purchase!");
+                            Console.WriteLine("\t\t\t-------------------------------------------------------------------------------");
+                        }
+                        return;
+                    default:
+                        Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                        Console.Clear();
+                        Console.WriteLine("\n\t\t\t\tinvalid choice");
+                        break;
+                }
+                Console.Write("\n\n\t\t\tDo you want to buy again?(yes/no): ");
+                answer = Convert.ToString(Console.ReadLine());
+            } 
+            while (answer == "yes");
+            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+            Console.Clear();
+            Console.WriteLine("\n\n\t\t\t\tThank you for shopping at {0}", boutiquename);
+            Console.WriteLine("\n\n\t\t\tPurchase Summary:");
+            Console.WriteLine("\t\t\t-------------------------------------------------------------------------------");
+            Console.WriteLine("\n\t\t\t\tITEMS:\t\t\t\t\t\t\tTOTAL:");
+            Console.WriteLine("\t\t\t-------------------------------------------------------------------------------");
+            Console.WriteLine(summary);
+            Console.WriteLine("\t\t\t-------------------------------------------------------------------------------");
+            if (summaryprice > 0)
+            {
+                Console.WriteLine("\n\n\t\t\t\t\t\t\t\t\t\tTotal cost = P{0:n2}", summaryprice);
+                Console.WriteLine("\t\t\t-------------------------------------------------------------------------------");
+            }
+            else
+            {
+                Console.WriteLine("\n\t\t\t\t\t\t\tNo items purchase!");
+                Console.WriteLine("\t\t\t-------------------------------------------------------------------------------");
+            }
+        }
+    }
+}
